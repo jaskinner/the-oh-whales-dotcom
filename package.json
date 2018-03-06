@@ -1,0 +1,86 @@
+{
+  "name": "the-oh-whales-dotcom",
+  "version": "1.0.0",
+  "description": "Oh Whales",
+  "main": "index.js",
+  "watch": {
+    "run-sass": {
+      "patterns": [
+        "src",
+        "sass"
+      ],
+      "extensions": [
+        "sass,scss"
+      ],
+      "quiet": false
+    },
+    "run-postcss": {
+      "patterns": [
+        "src",
+        "css"
+      ],
+      "extensions": [
+        "css"
+      ],
+      "quiet": false
+    },
+    "run-uglify": {
+      "patterns": [
+        "src",
+        "js"
+      ],
+      "extensions": [
+        "js,es6"
+      ],
+      "quiet": false
+    },
+    "run-imagemin": {
+      "patterns": [
+        "src",
+        "images"
+      ],
+      "extensions": [
+        "*"
+      ],
+      "quiet": false
+    }
+  },
+  "scripts": {
+    "build": "npm run run-sass && npm run run-postcss && npm run run-uglify && npm run run-imagemin",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"SASS, PostCSS, Uglify, ImageMin\" -c \"yellow.bold,cyan.bold,magenta.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-postcss\" \"npm run watch-uglify\" \"npm run watch-imagemin\"",
+    "run-sass": "sass --update ./src/sass:./src/css",
+    "watch-sass": "npm-watch run-sass",
+    "run-postcss": "postcss ./src/css/*.css --dir ./dist --config ./postcss.config.js",
+    "watch-postcss": "npm-watch run-postcss",
+    "run-uglify": "uglifyjs ./src/js/index.es6 -o ./dist/index.js",
+    "watch-uglify": "npm-watch run-uglify",
+    "run-imagemin": "imagemin ./images/* --out-dir=dist",
+    "watch-imagemin": "npm-watch run-imagemin"
+  },
+  "keywords": [
+    "oh",
+    "whales",
+    "oh whales",
+    "music",
+    "rock",
+    "band"
+  ],
+  "author": "Slash Slash inc.",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^8.1.0",
+    "concurrently": "^3.5.1",
+    "cssnano": "^3.10.0",
+    "imagemin": "^5.3.1",
+    "imagemin-cli": "^3.0.0",
+    "npm-watch": "^0.3.0",
+    "postcss-calc": "^6.0.1",
+    "postcss-import": "^11.1.0",
+    "uglify-es": "^3.3.9"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "fontawesome": "^4.7.2",
+    "normalize.css": "^8.0.0"
+  }
+}

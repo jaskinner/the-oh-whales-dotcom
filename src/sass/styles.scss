@@ -1,0 +1,67 @@
+@import "../../node_modules/normalize.css/normalize.css";
+
+$bg: #5CFFED;
+$fg: #FF8F5C;
+$img-max-width: 1024px;
+$img-max-height: 400px;
+$icon-size: 40px;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $bg;
+  color: $fg;
+  font-size: 1.5em;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  max-width: $img-max-width;
+  height: 100%;
+  min-height: 100%;
+  text-align: center;
+  margin: 0 auto;
+
+  &-helper {
+    display: inline-block;
+    height: calc(50% - ((#{$img-max-height}/2) + #{$icon-size}));
+    vertical-align: middle;
+  }
+}
+
+.logo {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  max-width: $img-max-width;
+  max-height: $img-max-height;
+  vertical-align: middle;
+}
+
+.social-media {
+  display: block;
+  margin: $icon-size auto;
+  width: 100%;
+  height: auto;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    padding: 0 12px;
+    color: $fg;
+  }
+}

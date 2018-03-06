@@ -1,0 +1,52 @@
+@import url(../../node_modules/normalize.css/normalize.css);
+html {
+  font-size: 62.5%; }
+
+body {
+  background-color: #5CFFED;
+  color: #FF8F5C;
+  font-size: 1.5em;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  min-height: 100%; }
+
+.frame {
+  display: block;
+  width: 100%;
+  max-width: 1024px;
+  height: 100%;
+  min-height: 100%;
+  text-align: center;
+  margin: 0 auto; }
+  .frame-helper {
+    display: inline-block;
+    height: calc(50% - ((400px/2) + 40px));
+    vertical-align: middle; }
+
+.logo {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  max-width: 1024px;
+  max-height: 400px;
+  vertical-align: middle; }
+
+.social-media {
+  display: block;
+  margin: 40px auto;
+  width: 100%;
+  height: auto;
+  text-align: center; }
+  .social-media a {
+    display: inline-block;
+    padding: 0 12px;
+    color: #FF8F5C; }
+
+/*# sourceMappingURL=styles.css.map */
