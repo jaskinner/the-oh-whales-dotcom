@@ -68,6 +68,7 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 
 body,
@@ -87,6 +88,7 @@ html {
   text-align: center;
   margin: 0 auto;
   z-index: 1000;
+  @include transition(width $animation-time, max-width $animation-time);
 
   &-helper {
     position: relative;
@@ -94,6 +96,7 @@ html {
     height: calc(50% - (#{$img-xl-height/2 + $icon-size + (($wave-rows - 1)*($wave-min-size/2))/2}));
     vertical-align: middle;
     z-index: 1000;
+    @include transition(height $animation-time);
   }
 }
 
