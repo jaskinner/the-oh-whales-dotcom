@@ -1,11 +1,24 @@
 @import "../../node_modules/normalize.css/normalize.css";
 $bg: #5CFFED;
 $fg: #FF8F5C;
-$img-max-width: 1024px;
-$img-max-height: 400px;
+$wave: #1DB2A2;
+$media-xs: "(max-width: 549px)";
+$media-sm: "(min-width: 550px) and (max-width: 749px)";
+$media-md: "(min-width: 750px) and (max-width: 999px)";
+$media-lg: "(min-width: 1000px) and (max-width 1199px)";
+$media-xl: "(min-width: 1200px)";
+$img-xs-width: 340px;
+$img-xs-height: 163px;
+$img-sm-width: 500px;
+$img-sm-height: 240px;
+$img-md-width: 600px;
+$img-md-height: 288px;
+$img-lg-width: 800px;
+$img-lg-height: 385px;
+$img-xl-width: 1024px;
+$img-xl-height: 492px;
 $icon-size: 40px;
 $animation-time: 0.32s;
-$wave: #1DB2A2;
 $wave-size: 20%;
 $wave-min-size: 120px;
 $wave-rows: 5;
@@ -15,6 +28,33 @@ $wave-left: -5%;
   -o-transition: $transition;
   -webkit-transition: $transition;
   transition: $transition;
+}
+@mixin media($media) {
+  @if $media == "xs" {
+    @media #{$media-xs} {
+      @content;
+    }
+  } @else
+  if $media == "sm" {
+    @media #{$media-sm} {
+      @content;
+    }
+  } @else
+  if $media == "md" {
+    @media #{$media-md} {
+      @content;
+    }
+  } @else
+  if $media == "lg" {
+    @media #{$media-lg} {
+      @content;
+    }
+  } @else
+  if $media == "xl" {
+    @media #{$media-xl} {
+      @content;
+    }
+  }
 }
 
 html {
@@ -43,7 +83,7 @@ html {
   width: 100%;
   height: 100%;
   min-height: 100%;
-  max-width: $img-max-width;
+  max-width: $img-xl-width;
   text-align: center;
   margin: 0 auto;
   z-index: 1000;
@@ -51,7 +91,7 @@ html {
   &-helper {
     position: relative;
     display: inline-block;
-    height: calc(50% - (#{$img-max-height/2 + $icon-size + (($wave-rows - 1)*($wave-min-size/2))/2}));
+    height: calc(50% - (#{$img-xl-height/2 + $icon-size + (($wave-rows - 1)*($wave-min-size/2))/2}));
     vertical-align: middle;
     z-index: 1000;
   }
@@ -63,11 +103,33 @@ html {
   margin: 0 auto;
   width: 100%;
   height: auto;
-  max-width: $img-max-width;
-  max-height: $img-max-height;
+  max-width: $img-xl-width;
+  max-height: $img-xl-height;
   vertical-align: middle;
   z-index: 1000;
+  @include transition(width $animation-time, height $animation-time, max-width $animation-time, max-height $animation-time);
 }
+@mixin responsive-frame($media-size, $img-width, $img-height) {
+  @include media($media-size) {
+    .frame {
+      max-width: $img-width;
+
+      &-helper {
+        height: calc(50% - (#{$img-height/2 + $icon-size + (($wave-rows - 1)*($wave-min-size/2))/2}));
+      }
+    }
+
+    .logo {
+      max-width: $img-width;
+      max-height: $img-height;
+    }
+  }
+}
+@include responsive-frame("xs", $img-xs-width, $img-xs-height);
+@include responsive-frame("sm", $img-sm-width, $img-sm-height);
+@include responsive-frame("md", $img-md-width, $img-md-height);
+@include responsive-frame("lg", $img-lg-width, $img-lg-height);
+@include responsive-frame("xl", $img-xl-width, $img-xl-height);
 
 .social-media {
   position: relative;
@@ -78,7 +140,7 @@ html {
   text-align: center;
   z-index: 1000;
   @include transition(font-size $animation-time);
-  @media(max-width: 500px) {
+  @include media("xs") {
     font-size: 0.5em;
   }
 

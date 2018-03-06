@@ -29,7 +29,7 @@ html {
   .frame-helper {
     position: relative;
     display: inline-block;
-    height: calc(50% - (360px));
+    height: calc(50% - (406px));
     vertical-align: middle;
     z-index: 1000; }
 
@@ -40,10 +40,59 @@ html {
   width: 100%;
   height: auto;
   max-width: 1024px;
-  max-height: 400px;
+  max-height: 492px;
   vertical-align: middle;
-  z-index: 1000; }
+  z-index: 1000;
+  -moz-transition: width 0.32s, height 0.32s, max-width 0.32s, max-height 0.32s;
+  -o-transition: width 0.32s, height 0.32s, max-width 0.32s, max-height 0.32s;
+  -webkit-transition: width 0.32s, height 0.32s, max-width 0.32s, max-height 0.32s;
+  transition: width 0.32s, height 0.32s, max-width 0.32s, max-height 0.32s; }
 
+@media (max-width: 549px) {
+  .frame {
+    max-width: 340px; }
+    .frame-helper {
+      height: calc(50% - (241.5px)); }
+
+  .logo {
+    max-width: 340px;
+    max-height: 163px; } }
+@media (min-width: 550px) and (max-width: 749px) {
+  .frame {
+    max-width: 500px; }
+    .frame-helper {
+      height: calc(50% - (280px)); }
+
+  .logo {
+    max-width: 500px;
+    max-height: 240px; } }
+@media (min-width: 750px) and (max-width: 999px) {
+  .frame {
+    max-width: 600px; }
+    .frame-helper {
+      height: calc(50% - (304px)); }
+
+  .logo {
+    max-width: 600px;
+    max-height: 288px; } }
+@media (min-width: 1000px) and (max-width 1199px) {
+  .frame {
+    max-width: 800px; }
+    .frame-helper {
+      height: calc(50% - (352.5px)); }
+
+  .logo {
+    max-width: 800px;
+    max-height: 385px; } }
+@media (min-width: 1200px) {
+  .frame {
+    max-width: 1024px; }
+    .frame-helper {
+      height: calc(50% - (406px)); }
+
+  .logo {
+    max-width: 1024px;
+    max-height: 492px; } }
 .social-media {
   position: relative;
   display: block;
@@ -56,7 +105,7 @@ html {
   -o-transition: font-size 0.32s;
   -webkit-transition: font-size 0.32s;
   transition: font-size 0.32s; }
-  @media (max-width: 500px) {
+  @media (max-width: 549px) {
     .social-media {
       font-size: 0.5em; } }
   .social-media a {
