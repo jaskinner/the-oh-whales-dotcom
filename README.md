@@ -44,4 +44,4 @@ Editable source files are in the ./src directory, and will be built/compiled to 
 
 ## Serving
 
-Serve the static dist/index.html file.
+Serve the static ./dist/index.html file.
