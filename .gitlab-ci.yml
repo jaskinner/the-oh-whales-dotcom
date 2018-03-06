@@ -1,6 +1,9 @@
+image:       alpine:latest
+
 pages:
-  stage:       deploy
+  stage:     deploy
   script:
+  - echo 'Moving contents of dist directory to GitLab build public directory'
   - mkdir .public
   - cp -r ./dist/* .public
   - mv .public public
