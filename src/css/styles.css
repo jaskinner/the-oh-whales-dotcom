@@ -3,12 +3,15 @@ html {
   font-size: 62.5%; }
 
 body {
+  display: flex;
   background-color: #5CFFED;
   color: #FF8F5C;
   font-size: 1.5em;
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  justify-content: center;
+  align-items: center; }
 
 body,
 html {
@@ -17,26 +20,32 @@ html {
   min-height: 100%; }
 
 .frame {
+  position: relative;
   display: block;
   width: 100%;
   max-width: 1024px;
   height: 100%;
   min-height: 100%;
   text-align: center;
-  margin: 0 auto; }
+  margin: 0 auto;
+  z-index: 1000; }
   .frame-helper {
+    position: relative;
     display: inline-block;
     height: calc(50% - ((400px/2) + 40px));
-    vertical-align: middle; }
+    vertical-align: middle;
+    z-index: 1000; }
 
 .logo {
+  position: relative;
   display: inline-block;
   margin: 0 auto;
   width: 100%;
   height: auto;
   max-width: 1024px;
   max-height: 400px;
-  vertical-align: middle; }
+  vertical-align: middle;
+  z-index: 1000; }
 
 .social-media {
   display: block;
@@ -48,5 +57,67 @@ html {
     display: inline-block;
     padding: 0 12px;
     color: #FF8F5C; }
+
+.waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; }
+  .waves .wave {
+    position: relative;
+    display: inline;
+    width: 20%;
+    height: 20%;
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 0 0 50% 50%;
+    border: 0;
+    margin: 0 -2px;
+    float: left; }
+  .waves .row {
+    position: absolute;
+    left: -5%;
+    width: 120%;
+    padding: 0 2px;
+    animation: slidein 2.5s infinite alternate;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 0; }
+    .waves .row.one {
+      top: calc(100% - (5 * 40px));
+      z-index: -1; }
+      .waves .row.one .wave {
+        background-color: #5CFFED; }
+    .waves .row.two {
+      top: calc(100% - ((5 - 1) * 40px));
+      animation: slidein 3s infinite alternate;
+      z-index: -2; }
+      .waves .row.two .wave {
+        background-color: #1DB2A2; }
+    .waves .row.three {
+      top: calc(100% - ((5 - 2) * 40px));
+      z-index: -3;
+      animation: slidein 2s infinite alternate; }
+      .waves .row.three .wave {
+        background-color: #16867a; }
+    .waves .row.four {
+      top: calc(100% - ((5 - 3) * 40px));
+      z-index: -4;
+      animation: slidein 3.5s infinite alternate; }
+      .waves .row.four .wave {
+        background-color: #0f5a52; }
+    .waves .row.five {
+      top: calc(100% - ((5 - 4) * 40px));
+      z-index: -5;
+      animation: slidein 1.5s infinite alternate; }
+      .waves .row.five .wave {
+        background-color: #082e2a; }
+
+@keyframes slidein {
+  from {
+    margin-left: -5%; }
+  to {
+    margin-left: 0; } }
 
 /*# sourceMappingURL=styles.css.map */

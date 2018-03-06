@@ -1,22 +1,30 @@
 @import "../../node_modules/normalize.css/normalize.css";
-
 $bg: #5CFFED;
 $fg: #FF8F5C;
 $img-max-width: 1024px;
 $img-max-height: 400px;
 $icon-size: 40px;
+$wave: #1DB2A2;
+
+$wave-size: 20%;
+$wave-min-height: 80px;
+$wave-rows: 5;
+$wave-left: -5%;
 
 html {
   font-size: 62.5%;
 }
 
 body {
+  display: flex;
   background-color: $bg;
   color: $fg;
   font-size: 1.5em;
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
 }
 
 body,
@@ -27,6 +35,7 @@ html {
 }
 
 .frame {
+  position: relative;
   display: block;
   width: 100%;
   max-width: $img-max-width;
@@ -34,15 +43,19 @@ html {
   min-height: 100%;
   text-align: center;
   margin: 0 auto;
+  z-index: 1000;
 
   &-helper {
+    position: relative;
     display: inline-block;
     height: calc(50% - ((#{$img-max-height}/2) + #{$icon-size}));
     vertical-align: middle;
+    z-index: 1000;
   }
 }
 
 .logo {
+  position: relative;
   display: inline-block;
   margin: 0 auto;
   width: 100%;
@@ -50,6 +63,7 @@ html {
   max-width: $img-max-width;
   max-height: $img-max-height;
   vertical-align: middle;
+  z-index: 1000;
 }
 
 .social-media {
@@ -63,5 +77,95 @@ html {
     display: inline-block;
     padding: 0 12px;
     color: $fg;
+  }
+}
+
+.waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+
+  .wave {
+    position: relative;
+    display: inline;
+    width: $wave-size;
+    height: $wave-size;
+    min-width: $wave-min-height;
+    min-height: $wave-min-height;
+    border-radius: 0 0 50% 50%;
+    border: 0;
+    margin: 0 -2px;
+    float: left;
+  }
+
+  .row {
+    position: absolute;
+    left: $wave-left;
+    width: 120%;
+    padding: 0 2px;
+    animation: slidein 2.5s infinite alternate;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 0;
+
+    &.one {
+      top: calc(100% - (#{$wave-rows} * #{$wave-min-height/2}));
+      z-index: -1;
+
+      .wave {
+        background-color: $bg;
+      }
+    }
+
+    &.two {
+      top: calc(100% - ((#{$wave-rows} - 1) * #{$wave-min-height/2}));
+      animation: slidein 3s infinite alternate;
+      z-index: -2;
+
+      .wave {
+        background-color: $wave;
+      }
+    }
+
+    &.three {
+      top: calc(100% - ((#{$wave-rows} - 2) * #{$wave-min-height/2}));
+      z-index: -3;
+      animation: slidein 2s infinite alternate;
+
+      .wave {
+        background-color: darken($wave, 10%);
+      }
+    }
+
+    &.four {
+      top: calc(100% - ((#{$wave-rows} - 3) * #{$wave-min-height/2}));
+      z-index: -4;
+      animation: slidein 3.5s infinite alternate;
+
+      .wave {
+        background-color: darken($wave, 20%);
+      }
+    }
+
+    &.five {
+      top: calc(100% - ((#{$wave-rows} - 4) * #{$wave-min-height/2}));
+      z-index: -5;
+      animation: slidein 1.5s infinite alternate;
+
+      .wave {
+        background-color: darken($wave, 30%);
+      }
+    }
+  }
+}
+@keyframes slidein {
+  from {
+    margin-left: $wave-left;
+  }
+
+  to {
+    margin-left: 0;
   }
 }
