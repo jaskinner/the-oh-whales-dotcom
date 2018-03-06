@@ -68,7 +68,6 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
 }
 
 body,
@@ -206,13 +205,39 @@ html {
     @include wave-row("four", 3, 4.2s, -4, darken($wave, 6%));
     @include wave-row("five", 4, 1.4s, -5, darken($wave, 12%));
   }
-}
-@keyframes slidein {
-  from {
-    margin-left: $wave-left;
-  }
+  @keyframes slidein {
+    from {
+      margin-left: $wave-left;
+    }
 
-  to {
-    margin-left: 0;
+    to {
+      margin-left: 0;
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+
+  small {
+    display: block;
+    font-size: 0.75em;
+    color: #fff;
+    opacity: 0.6;
+
+    a {
+      color: $bg;
+      @include transition(color $animation-time);
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: darken($bg, 6%);
+      }
+    }
   }
 }
