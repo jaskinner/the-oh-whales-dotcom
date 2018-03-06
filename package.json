@@ -54,7 +54,7 @@
     "watch-postcss": "npm-watch run-postcss",
     "run-uglify": "uglifyjs ./src/js/index.es6 -o ./dist/index.js",
     "watch-uglify": "npm-watch run-uglify",
-    "run-imagemin": "imagemin ./images/* --out-dir=dist",
+    "run-imagemin": "imagemin ./src/images/* --out-dir=dist",
     "watch-imagemin": "npm-watch run-imagemin"
   },
   "keywords": [

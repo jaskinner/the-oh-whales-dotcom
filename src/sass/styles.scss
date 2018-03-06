@@ -4,6 +4,7 @@ $fg: #FF8F5C;
 $img-max-width: 1024px;
 $img-max-height: 400px;
 $icon-size: 40px;
+$animation-time: 0.32s;
 $wave: #1DB2A2;
 $wave-size: 20%;
 $wave-min-size: 120px;
@@ -50,7 +51,7 @@ html {
   &-helper {
     position: relative;
     display: inline-block;
-    height: calc(50% - ((#{$img-max-height}/2) + #{$icon-size}*2));
+    height: calc(50% - (#{$img-max-height/2 + $icon-size + (($wave-rows - 1)*($wave-min-size/2))/2}));
     vertical-align: middle;
     z-index: 1000;
   }
@@ -71,17 +72,21 @@ html {
 .social-media {
   position: relative;
   display: block;
-  margin: $icon-size auto;
+  margin: #{$icon-size/2} auto;
   width: 100%;
   height: auto;
   text-align: center;
   z-index: 1000;
+  @include transition(font-size $animation-time);
+  @media(max-width: 500px) {
+    font-size: 0.5em;
+  }
 
   a {
     display: inline-block;
     padding: 0 12px;
     color: $fg;
-    @include transition(color 0.32s);
+    @include transition(color $animation-time);
 
     &:active,
     &:focus,

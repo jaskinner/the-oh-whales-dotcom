@@ -29,7 +29,7 @@ html {
   .frame-helper {
     position: relative;
     display: inline-block;
-    height: calc(50% - ((400px/2) + 40px*2));
+    height: calc(50% - (360px));
     vertical-align: middle;
     z-index: 1000; }
 
@@ -47,11 +47,18 @@ html {
 .social-media {
   position: relative;
   display: block;
-  margin: 40px auto;
+  margin: 20px auto;
   width: 100%;
   height: auto;
   text-align: center;
-  z-index: 1000; }
+  z-index: 1000;
+  -moz-transition: font-size 0.32s;
+  -o-transition: font-size 0.32s;
+  -webkit-transition: font-size 0.32s;
+  transition: font-size 0.32s; }
+  @media (max-width: 500px) {
+    .social-media {
+      font-size: 0.5em; } }
   .social-media a {
     display: inline-block;
     padding: 0 12px;
