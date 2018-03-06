@@ -47,7 +47,7 @@
   },
   "scripts": {
     "build": "npm run run-sass && npm run run-postcss && npm run run-uglify && npm run run-imagemin",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"SASS, PostCSS, Uglify, ImageMin\" -c \"yellow.bold,cyan.bold,magenta.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-postcss\" \"npm run watch-uglify\" \"npm run watch-imagemin\"",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"SASS,PostCSS,Uglify,ImageMin\" -c \"yellow.bold,cyan.bold,magenta.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-postcss\" \"npm run watch-uglify\" \"npm run watch-imagemin\"",
     "run-sass": "sass --update ./src/sass:./src/css",
     "watch-sass": "npm-watch run-sass",
     "run-postcss": "postcss ./src/css/*.css --dir ./dist --config ./postcss.config.js",
