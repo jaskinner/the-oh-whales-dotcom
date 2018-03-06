@@ -2,8 +2,8 @@ pages:
   stage: deploy
   script:
   - cp -r ./dist/* public
-  expire_in: 1 day
   artifacts:
+    expire_in: 1 day
     paths:
     - public
   only:
