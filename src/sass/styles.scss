@@ -5,26 +5,28 @@ $img-max-width: 1024px;
 $img-max-height: 400px;
 $icon-size: 40px;
 $wave: #1DB2A2;
-
 $wave-size: 20%;
-$wave-min-height: 80px;
+$wave-min-size: 120px;
 $wave-rows: 5;
 $wave-left: -5%;
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
 
 html {
   font-size: 62.5%;
 }
 
 body {
-  display: flex;
   background-color: $bg;
   color: $fg;
   font-size: 1.5em;
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  justify-content: center;
-  align-items: center;
 }
 
 body,
@@ -38,9 +40,9 @@ html {
   position: relative;
   display: block;
   width: 100%;
-  max-width: $img-max-width;
   height: 100%;
   min-height: 100%;
+  max-width: $img-max-width;
   text-align: center;
   margin: 0 auto;
   z-index: 1000;
@@ -48,7 +50,7 @@ html {
   &-helper {
     position: relative;
     display: inline-block;
-    height: calc(50% - ((#{$img-max-height}/2) + #{$icon-size}));
+    height: calc(50% - ((#{$img-max-height}/2) + #{$icon-size}*2));
     vertical-align: middle;
     z-index: 1000;
   }
@@ -67,16 +69,25 @@ html {
 }
 
 .social-media {
+  position: relative;
   display: block;
   margin: $icon-size auto;
   width: 100%;
   height: auto;
   text-align: center;
+  z-index: 1000;
 
   a {
     display: inline-block;
     padding: 0 12px;
     color: $fg;
+    @include transition(color 0.32s);
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: darken($fg, 6%);
+    }
   }
 }
 
@@ -89,15 +100,14 @@ html {
 
   .wave {
     position: relative;
-    display: inline;
+    display: inline-block;
     width: $wave-size;
     height: $wave-size;
-    min-width: $wave-min-height;
-    min-height: $wave-min-height;
+    min-width: $wave-min-size;
+    min-height: $wave-min-size;
     border-radius: 0 0 50% 50%;
     border: 0;
     margin: 0 -2px;
-    float: left;
   }
 
   .row {
@@ -109,55 +119,22 @@ html {
     overflow: hidden;
     white-space: nowrap;
     z-index: 0;
+    @mixin wave-row($selector, $offset, $animation-time, $z-index, $color) {
+      &.#{$selector} {
+        top: calc(100% - ((#{$wave-rows} - #{$offset}) * #{$wave-min-size/2}));
+        animation: slidein $animation-time infinite alternate;
+        z-index: $z-index;
 
-    &.one {
-      top: calc(100% - (#{$wave-rows} * #{$wave-min-height/2}));
-      z-index: -1;
-
-      .wave {
-        background-color: $bg;
+        .wave {
+          background-color: $color;
+        }
       }
     }
-
-    &.two {
-      top: calc(100% - ((#{$wave-rows} - 1) * #{$wave-min-height/2}));
-      animation: slidein 3s infinite alternate;
-      z-index: -2;
-
-      .wave {
-        background-color: $wave;
-      }
-    }
-
-    &.three {
-      top: calc(100% - ((#{$wave-rows} - 2) * #{$wave-min-height/2}));
-      z-index: -3;
-      animation: slidein 2s infinite alternate;
-
-      .wave {
-        background-color: darken($wave, 10%);
-      }
-    }
-
-    &.four {
-      top: calc(100% - ((#{$wave-rows} - 3) * #{$wave-min-height/2}));
-      z-index: -4;
-      animation: slidein 3.5s infinite alternate;
-
-      .wave {
-        background-color: darken($wave, 20%);
-      }
-    }
-
-    &.five {
-      top: calc(100% - ((#{$wave-rows} - 4) * #{$wave-min-height/2}));
-      z-index: -5;
-      animation: slidein 1.5s infinite alternate;
-
-      .wave {
-        background-color: darken($wave, 30%);
-      }
-    }
+    @include wave-row("one", 0, 2.8s, -1, $bg);
+    @include wave-row("two", 1, 3.5s, -2, lighten($wave, 6%));
+    @include wave-row("three", 2, 2.1s, -3, $wave);
+    @include wave-row("four", 3, 4.2s, -4, darken($wave, 6%));
+    @include wave-row("five", 4, 1.4s, -5, darken($wave, 12%));
   }
 }
 @keyframes slidein {
