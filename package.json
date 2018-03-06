@@ -50,7 +50,7 @@
     "watch": "concurrently -k -p \"[{name}]\" -n \"SASS,PostCSS,Uglify,ImageMin\" -c \"yellow.bold,cyan.bold,magenta.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-postcss\" \"npm run watch-uglify\" \"npm run watch-imagemin\"",
     "run-sass": "sass --update ./src/sass:./src/css",
     "watch-sass": "npm-watch run-sass",
-    "run-postcss": "postcss ./src/css/*.css --dir ./dist --config ./postcss.config.js",
+    "run-postcss": "postcss ./src/css/*.css --dir ./dist --config ./postcss.config.js && rm ./src/css/styles.*",
     "watch-postcss": "npm-watch run-postcss",
     "run-uglify": "uglifyjs ./src/js/index.es6 -o ./dist/index.js",
     "watch-uglify": "npm-watch run-uglify",
