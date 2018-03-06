@@ -1,9 +1,8 @@
 pages:
   stage: deploy
   script:
-  - mkdir .public
-  - cp -r ./dist/* .public
-  - mv .public public
+  - cp -r ./dist/* public
+  expire_in: 1 day
   artifacts:
     paths:
     - public
